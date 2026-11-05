@@ -1,7 +1,7 @@
 function del_element(){
-    const element = document.getElementsByClassName("ULSxyf");
+    const element = document.getElementsByClassName("A6K0A");
     for (let i of element) {
-        if (i.textContent && i.textContent.includes("関連する質問")) {
+        if (i.textContent && i.getElementsByTagName("span")[0].textContent == "関連する質問") {
             const el = i.getElementsByTagName("div")[0];
             el.style.display = "none";
             return;

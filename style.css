@@ -27,7 +27,7 @@ body {
   width: 200px;
 }
 
-.demo-container {
+.main-container {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -36,7 +36,7 @@ body {
   margin: 2%;
 }
 
-.demo-title {
+.main-title {
   font-size: 100%;
   color: var(--color-heading);
 }
@@ -120,11 +120,4 @@ body {
 
 .toggle-input:checked:active + .toggle-track::after {
   transform: translateX(calc(var(--toggle-width) - var(--toggle-height) - 6px));
-}
-
-
-.toggle-label {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--color-text);
 }

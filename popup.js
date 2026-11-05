@@ -9,7 +9,7 @@ async function sendToPage(status) {
 
 document.addEventListener("DOMContentLoaded", async () => {
     const isChecked = await ExtensionConfig.getToggleState();
-    switch_togle.checked = isChecked; // 保存されている状態（true/false）をツマミに反映
+    switch_togle.checked = isChecked; // 保存されている状態（true/false）
 });
 
 
