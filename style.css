@@ -1,0 +1,130 @@
+:root {
+  --toggle-width: 60px;
+  --toggle-height: 32px;
+  --toggle-padding: 4px;
+
+  --color-off: #d1d5db;
+  --color-on: #3b82f6;
+  --color-knob: #ffffff;
+
+  --color-bg: #f9fafb;
+  --color-text: #374151;
+  --color-heading: #111827;
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  width: 200px;
+}
+
+.demo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  margin: 2%;
+}
+
+.demo-title {
+  font-size: 100%;
+  color: var(--color-heading);
+}
+
+
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+.toggle-track {
+  position: relative;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  background: var(--color-off);
+  border-radius: 999px;
+  transition: background-color var(--duration) var(--ease);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+
+.toggle-track::after {
+  content: "";
+  position: absolute;
+  top: var(--toggle-padding);
+  left: var(--toggle-padding);
+  width: calc(var(--toggle-height) - var(--toggle-padding) * 2);
+  height: calc(var(--toggle-height) - var(--toggle-padding) * 2);
+  background: var(--color-knob);
+  border-radius: 50%;
+  transition:
+    transform var(--duration) var(--ease),
+    width var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+.toggle-input:checked + .toggle-track {
+  background: var(--color-on);
+}
+
+.toggle-input:checked + .toggle-track::after {
+  transform: translateX(calc(var(--toggle-width) - var(--toggle-height)));
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
+}
+
+
+/* ホバー時 */
+.toggle:hover .toggle-track {
+  filter: brightness(0.97);
+}
+
+/* フォーカス（キーボード操作時のみ） */
+.toggle-input:focus-visible + .toggle-track {
+  outline: 2px solid var(--color-on);
+  outline-offset: 3px;
+}
+
+/* 押下時: ノブが横に伸びるマイクロインタラクション */
+.toggle:active .toggle-track::after {
+  width: calc((var(--toggle-height) - var(--toggle-padding) * 2) + 6px);
+}
+
+.toggle-input:checked:active + .toggle-track::after {
+  transform: translateX(calc(var(--toggle-width) - var(--toggle-height) - 6px));
+}
+
+
+.toggle-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text);
+}

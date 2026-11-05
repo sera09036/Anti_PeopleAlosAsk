@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "Anti_PeopleAlsoAsk",
+    "version": "1.1",
+    "description": "gloogle検索結果に表示される'関連する質問'を非表示にする拡張機能です。",
+
+    "permissions": [
+      "activeTab",
+      "storage"
+    ],
+
+    "icons": {
+        "16": "imgs/icon16.png",
+        "32": "imgs/icon32.png",
+        "48": "imgs/icon48.png",
+        "128": "imgs/icon128.png"
+    },
+
+    "action": {
+        "default_popup": "main.html"
+    },
+
+    "content_scripts": [
+    {
+      "matches": ["https://www.google.com/search*", "https://www.google.co.jp/search*", "https://google.com/search*", "https://google.co.jp/search*"],
+      "js": ["control.js", "config.js"]
+    }
+  ] 
+    
+}
