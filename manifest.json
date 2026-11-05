@@ -4,6 +4,15 @@
     "version": "1.1",
     "description": "Google検索結果に表示される'関連する質問'を非表示にする拡張機能です。",
 
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{846cc341-8c01-4cae-9b22-f29026a2e172}",
+            "data_collection_permissions": {
+              "required": ["none"]
+            }
+        }
+    },
+
     "permissions": [
       "activeTab",
       "storage"
